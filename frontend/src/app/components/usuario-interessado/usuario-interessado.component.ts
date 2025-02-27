@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 
 export class UsuarioInteressadoComponent implements OnInit {
   bolos: any[] = [];  
+  showAlert = false;
+  showError = false
 
   constructor(private boloService: BoloService, private router: Router) { }
 
@@ -32,18 +34,23 @@ export class UsuarioInteressadoComponent implements OnInit {
     bolo_ids: new FormControl([], Validators.required)  
   });
 
+
+
   submit2() {
     
     this.data = this.form.value;
 
       console.log(this.data)
-    this.boloService.createInteressado(this.data).subscribe(data => {
-      
-      this.form.reset();
-      alert('interesse cadastrado');
-      this.router.navigate(['/interessado']);
-      
-    });
+      this.boloService.createInteressado(this.data).subscribe({
+        next: () => {
+          this.showAlert = true;
+          this.form.reset();
+          this.router.navigate(['/interessado']);
+        },
+        error: () => {
+          this.showError = true;
+        }
+      });
   }
 
 }

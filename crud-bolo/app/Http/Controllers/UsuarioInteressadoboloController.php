@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 
 class UsuarioInteressadoboloController extends Controller
 {
+
+    
     public function store(Request $request)
     {
         $validated = $request->validate([

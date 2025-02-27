@@ -18,6 +18,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
                     <a class="nav-link" routerLink="/add">Add Bolo</a> <!-- Ajustado para Add Bolo -->
+                    <a class="nav-link" routerLink="/interessado">Mostrar Interese</a> <!-- Ajustado para Add Bolo -->
                 </div>
             </div>
         </div>
@@ -50,7 +51,8 @@
                             <td>{{bolo.valor}}</td>
                             <td>{{bolo.quantidade_disponivel}}</td>
                             <td>
-                                <button class="btn btn-primary" routerLink="/update/{{bolo.id}}">Editar</button> <!-- Ajustado para Editar Bolo -->
+                                <button class="btn btn-primary mx-2" routerLink="//interessado">Mostrar interesse</button> <!-- Ajustado para mostrar interrese em Bolo -->
+                                <button class="btn btn-primary mx-2" routerLink="/update/{{bolo.id}}">Editar</button> <!-- Ajustado para Editar Bolo -->
                                 <button class="btn btn-danger mx-2" (click)="deleteBolo(bolo.id)">Excluir</button> <!-- Ajustado para Excluir Bolo -->
                             </td>
                         </tr>

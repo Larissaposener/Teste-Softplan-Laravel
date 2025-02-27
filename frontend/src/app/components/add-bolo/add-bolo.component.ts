@@ -16,6 +16,8 @@ export class AddBoloComponent {
     }
 
     data: any
+    showError = false
+
 
     form = new FormGroup({
       nome: new FormControl('', Validators.required),
@@ -34,16 +36,25 @@ export class AddBoloComponent {
     });
 
     addBolo() {
+
       this.data = this.form.value;
-
       console.log(this.data)
-
-      this.data.peso = parseFloat(this.data.peso.replace(',', '.')); 
-      this.data.valor = parseFloat(this.data.valor.replace(',', '.'));
-      
-      this.service.addBolo(this.data).subscribe(data => {
-
-        this.router.navigate(['/']);
+      this.data.peso = parseFloat(this.data.peso.replace(',', '.'));   
+        this.data.valor = parseFloat(this.data.valor.replace(',', '.'));
+      this.service.addBolo(this.data).subscribe({
+        next: (response) => {
+          
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          console.error('Erro ao adicionar o bolo:', error); 
+  
+          this.showError = true;
+  
+          setTimeout(() => {
+            this.showError = false;
+          }, 5000); 
+        }
       });
     }
 

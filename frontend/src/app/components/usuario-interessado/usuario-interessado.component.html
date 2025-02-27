@@ -33,6 +33,14 @@
                 </div>
               </div>
 
+              <div *ngIf="showAlert" class="alert alert-success mt-3 text-center">
+                Interesse cadastrado com sucesso!
+              </div>
+
+              <div *ngIf="showError" class="text-danger mt-3 text-center">
+                Ocorreu um erro ao cadastrar o interesse. Tente novamente.
+              </div>
+
             </form>
           </div>
         </div>

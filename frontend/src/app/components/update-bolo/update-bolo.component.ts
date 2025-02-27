@@ -13,6 +13,7 @@ export class UpdateboloComponent implements OnInit {
 
   bolo?: any;
   form: FormGroup;
+  showError = false;
 
   constructor(
     private service: BoloService, 
@@ -57,9 +58,21 @@ export class UpdateboloComponent implements OnInit {
       console.log('Form data:', this.form.value);
 
 
-      this.service.updateBolo(this.bolo?.id, this.form.value).subscribe(data => {
-        console.log('Updated Bolo:', data);
-        this.router.navigate(['/']);
+      this.service.updateBolo(this.bolo?.id, this.form.value).subscribe({
+        next: (data) => {
+          console.log('Updated Bolo:', data);
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          console.error('Erro ao atualizar o bolo:', error);
+          // Mostra o alerta de erro para o usuário
+          this.showError = true;
+          
+          // Esconde o alerta após 5 segundos (opcional)
+          setTimeout(() => {
+            this.showError = false;
+          }, 5000);
+        }
       });
      
     } else {
