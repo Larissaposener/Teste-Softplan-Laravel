@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <h2 class="text-center text-white py-3 px-4 rounded shadow-lg" style="background-color: #6264A7;">Preencha seus dados</h2>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <!-- Formulário reativo -->
+            <form [formGroup]="form" (ngSubmit)="submit2()">
+              
+              <!-- Nome -->
+              <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="nome" formControlName="nome" class="form-control" required>
+              </div>
+    
+              <!-- Email -->
+              <div class="form-group mt-3">
+                <label for="email">Email</label>
+                <input type="email" id="email" formControlName="email" class="form-control" required>
+              </div>
+    
+              <!-- Bolo Disponível -->
+              <div class="mb-3">
+                <label for="opcoes" class="form-label">Bolos Disponíveis:</label>
+                <select formControlName="bolo_ids" class="form-select w-100" multiple>
+                  <option *ngFor="let bolo of bolos" [value]="bolo.id">{{ bolo.nome }}</option>
+                </select>
+              </div>
+    
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="Submit">
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

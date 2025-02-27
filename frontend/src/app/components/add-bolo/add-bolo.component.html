@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bolo</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+              <a class="nav-link" routerLink="/add">Add Bolo</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+        <div class="my-5">
+            <div class="mx-auto w-25 " style="max-width:100%;">
+              <h2 class="text-center mb-3">bolo</h2>               
+                <form [formGroup]="form" (ngSubmit)="addBolo()">
+                  <!-- Nome do Bolo -->
+                  <div class="row">
+                    <div class="col-md-12 form-group mb-3">
+                      <label for="nome" class="form-label">Nome do Bolo</label>
+                      <input id="nome" formControlName="nome" type="text" name="nome" class="form-control" placeholder="Nome do Bolo" required>
+                    </div>
+                  </div>
+                
+                  <!-- Peso do Bolo -->
+                  <div class="row">
+                    <div class="col-md-12 form-group mb-3">
+                      <label for="peso" class="form-label">Peso (gramas)</label>
+                      <input id="peso" formControlName="peso" type="text" name="peso" class="form-control" placeholder="Peso do Bolo (em gramas)" required>
+                    </div>
+                  </div>
+                
+                  <!-- Valor do Bolo -->
+                  <div class="row">
+                    <div class="col-md-12 form-group mb-3">
+                      <label for="valor" class="form-label">Valor</label>
+                      <input id="valor" formControlName="valor" type="text" name="valor" class="form-control" placeholder="valor do bolo" required>
+                    </div>
+                  </div>
+                
+                  <!-- Quantidade Disponível -->
+                  <div class="row">
+                    <div class="col-md-12 form-group mb-3">
+                      <label for="quantidade_disponivel" class="form-label">Quantidade Disponível</label>
+                      <input id="quantidade_disponivel" formControlName="quantidade_disponivel" type="number" name="quantidade_disponivel" class="form-control" placeholder="Quantidade Disponível" required>
+                    </div>
+                  </div>
+                
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <input [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="Submit">
+                  </div>
+                </div>
+      
+                <div>
+                  
+                </div>
+              </form>
+        
+            </div>
+          </div>
+    
+        
+    
+</body>
+</html>

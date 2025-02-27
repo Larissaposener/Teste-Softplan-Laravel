@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bolos</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                    <a class="nav-link" routerLink="/add">Add Bolo</a> <!-- Ajustado para Add Bolo -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Container for Bolos Table -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">View Bolos</h1>
+                <!-- Add Bolo Button -->
+                <button class="btn btn-primary" routerLink="/add">Add Bolo</button> <!-- Ajustado para Add Bolo -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Peso</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Quantidade Disponível</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Looping through bolos to display each one -->
+                        <tr *ngFor="let bolo of bolos">
+                            <th scope="row">{{bolo.id}}</th>
+                            <td>{{bolo.nome}}</td>
+                            <td>{{bolo.peso}}</td>
+                            <td>{{bolo.valor}}</td>
+                            <td>{{bolo.quantidade_disponivel}}</td>
+                            <td>
+                                <button class="btn btn-primary" routerLink="/update/{{bolo.id}}">Editar</button> <!-- Ajustado para Editar Bolo -->
+                                <button class="btn btn-danger mx-2" (click)="deleteBolo(bolo.id)">Excluir</button> <!-- Ajustado para Excluir Bolo -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
